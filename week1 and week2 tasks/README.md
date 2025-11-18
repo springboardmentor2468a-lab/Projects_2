@@ -1,11 +1,20 @@
 # WEEK1_and_WEEK2
 
-Contents:
-- data/day.csv, data/hour.csv  (raw datasets)
-- notebooks/eda.ipynb          (Colab notebook with cleaning, merging and EDA)
-- outputs/cleaned_merged.csv  (final cleaned merged dataset)
+In this folder,
+1.  I have uploaded the two raw datasets provided:
+-   **day.csv**
+-   **hour.csv**
+2. in "eda.ipynb" file 
+   All Exploratory Data Analysis (EDA) operations such as:
+- loading the datasets  
+- checking missing values  
+- cleaning  
+- merging  
+- visualizations (histograms, correlations, etc.)
 
-How to reproduce:
-1. Open notebooks/eda.ipynb in Google Colab or VS Code and run cells.
-2. cleaned_merged.csv was produced by the notebook and stored in outputs/.
+3. In  cleaned_merged.csv
+- This file contains:
+- all cleaned data  
+- no missing values  
+- combined results from day.csv and hour.csv 
   

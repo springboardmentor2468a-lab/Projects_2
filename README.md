@@ -1,5 +1,5 @@
 
-# RideWise:Predicting Bike-Sharing Demand Based on Weather and Urban Eventsac
+# RideWise:Predicting Bike-Sharing Demand Based on Weather and Urban Events
 
 ## 📌 Project Overview
 
@@ -28,10 +28,7 @@ I used both files and mearged them to create a richer dataset for modeling. beca
 
 This dataset was originally prepared by **Hadi Fanaee-T** from the University of Porto. Since the authors requested citation in any downstream use, I’ve included their reference below.
 
-> Fanaee-T, Hadi, and Gama, Joao. (2013).
-> *Event labeling combining ensemble detectors and background knowledge.*
-> Progress in Artificial Intelligence.
-> doi:10.1007/s13748-013-0040-3
+> Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, doi:10.1007/s13748-013-0040-3.
 
 I’ve also linked the Kaggle version for convenience.
 

@@ -2,7 +2,7 @@
 
 # RideWise: Predicting Bike-Sharing Demand Based on Weather and Urban Events
 
-## 📌 Project Overview
+##  Project Overview
 
 This project explores how weather, season, and temporal patterns influence bike-rental demand in Washington D.C. The dataset includes both hourly and daily rental logs, enabling the analysis of short-term fluctuations (such as peak commuting hours) and long-term seasonal trends.
 
@@ -10,7 +10,7 @@ The primary objective of this stage was to prepare a clean, analysis-ready datas
 
 ---
 
-## 📊 Dataset Description
+##  Dataset Description
 
 The dataset originates from the Capital Bikeshare program and includes usage data for two years (2011–2012). It combines bike usage with weather conditions, making it possible to study relationships between temperature, humidity, rainfall, windspeed, and rental behavior.
 
@@ -25,17 +25,17 @@ To strengthen the analysis, both files were used together, allowing comparison b
 
 ---
 
-## 📚 Dataset Source & Citation
+##  Dataset Source & Citation
 
 Dataset by **Hadi Fanaee-T, University of Porto**.
 
 > Fanaee-T, Hadi, and Gama, Joao, *Event labeling combining ensemble detectors and background knowledge*, Progress in Artificial Intelligence (2013): 1–15, Springer, doi:10.1007/s13748-013-0040-3.
 
-Source: Kaggle (Bike Sharing Dataset)
+Source: Kaggle (Bike Sharing Dataset) https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset?select=hour.csv
 
 ---
 
-## 🔧 Preprocessing Steps
+##  Preprocessing Steps
 
 * **Analyzed dataset structure** — Explored info, shape, null values, column categories, and duplicates.
 * **Standardized date format** — Converted `dteday` into consistent `datetime` format.
@@ -45,7 +45,7 @@ Source: Kaggle (Bike Sharing Dataset)
 
 ---
 
-## 📈 **Exploratory Data Analysis (EDA)**
+##  **Exploratory Data Analysis (EDA)**
 
 * **Explored dataset structure** — Verified datatypes, index settings, missing values, and duplicates for both datasets.
 * **Removed irrelevant columns** — Dropped fields like `instant`, `dteday`, `yr`, `casual`, and `registered` to retain modelling-focused features.

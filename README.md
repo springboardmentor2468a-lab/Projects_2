@@ -1,50 +1,58 @@
-# RideWise:Predicting Bike-Sharing Demand Based on Weather and Urban Events
+
+
+# RideWise: Predicting Bike-Sharing Demand Based on Weather and Urban Events
 
 ## 📌 Project Overview
 
-This project explores how weather, season, and time influence bike rental demand in Washington D.C. This dataset contains both hourly and daily logs, making it useful for understanding short-term trends (like peak commuting hours) as well as long-term seasonal changes.
+This project explores how weather, season, and temporal patterns influence bike-rental demand in Washington D.C. The dataset includes both hourly and daily rental logs, enabling the analysis of short-term fluctuations (such as peak commuting hours) and long-term seasonal trends.
 
-My main aim in this stage was to prepare a clean, analysis-ready dataset that can later be used for forecasting daily or hourly rental counts.
+The primary objective of this stage was to prepare a clean, analysis-ready dataset suitable for downstream forecasting tasks.
 
 ---
 
 ## 📊 Dataset Description
 
-The original dataset comes from the Capital Bikeshare program and includes two years of usage data (2011–2012). This dataset include combined bike usage logs with weather information, so it becomes possible to link temperature, humidity, rain, hour of the day, etc., to rental behavior.
+The dataset originates from the Capital Bikeshare program and includes usage data for two years (2011–2012). It combines bike usage with weather conditions, making it possible to study relationships between temperature, humidity, rainfall, windspeed, and rental behavior.
 
-There are two files:
+Two datasets were used:
 
-* **day.csv** — one row per day
-* **hour.csv** — one row per hour
+* **day.csv** — aggregated daily counts
+* **hour.csv** — detailed hourly counts
 
-Both contain fields like date, season, holiday, working day flag, temperature, humidity, windspeed, and rental counts. Only the hourly file contains the hour column.
+Both include features such as season, holiday flag, working-day status, temperature, humidity, windspeed, and rental count. The hourly dataset additionally provides the hour of the day.
 
-I used both files and mearged them to create a richer dataset for modeling. because I wanted to understand the relationship between daily and hourly patterns.
+To strengthen the analysis, both files were used together, allowing comparison between hourly and daily patterns.
 
 ---
 
 ## 📚 Dataset Source & Citation
 
-This dataset was originally prepared by **Hadi Fanaee-T** from the University of Porto. Since the authors requested citation in any downstream use, I’ve included their reference below.
+Dataset by **Hadi Fanaee-T, University of Porto**.
 
-> Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, doi:10.1007/s13748-013-0040-3.
+> Fanaee-T, Hadi, and Gama, Joao, *Event labeling combining ensemble detectors and background knowledge*, Progress in Artificial Intelligence (2013): 1–15, Springer, doi:10.1007/s13748-013-0040-3.
 
-I’ve also linked the Kaggle version for convenience.
-
-Dataset: https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset?select=hour.csv
+Source: Kaggle (Bike Sharing Dataset)
 
 ---
 
-## Preprocessing Steps 
+## 🔧 Preprocessing Steps
 
-* **Analyzed dataset structure** — Inspected null values, duplicates, and overall column distributions.
-* **Standardized date format** — Converted `dteday` into a consistent `datetime` format across both datasets.
-* **Validated logical consistency** — Checked conflicting cases (e.g., `holiday = 1` and `workingday = 1`).
-* **Merged datasets** — Concatenated aligned datasets using `pd.concat()` to create a unified hourly–daily dataset.
-* **Performed post-merge cleanup** — Removed duplicates, corrected datatypes, sorted by datetime, and exported the cleaned dataset.
+* **Analyzed dataset structure** — Explored info, shape, null values, column categories, and duplicates.
+* **Standardized date format** — Converted `dteday` into consistent `datetime` format.
+* **Validated logical consistency** — Checked contradictory combinations (e.g., `holiday=1` & `workingday=1`).
+* **Merged datasets** — Concatenated aligned datasets using `pd.concat()` to build a unified analytical dataset.
+* **Performed post-merge cleanup** — Removed duplicates, corrected dtypes, sorted by datetime, and exported cleaned data.
 
 ---
 
+## 📈 **Exploratory Data Analysis (EDA)**
 
+* **Explored dataset structure** — Verified datatypes, index settings, missing values, and duplicates for both datasets.
+* **Removed irrelevant columns** — Dropped fields like `instant`, `dteday`, `yr`, `casual`, and `registered` to retain modelling-focused features.
+* **Cleaned the data** — Removed duplicate records and confirmed the absence of null values.
+* **Handled outliers** — Applied the IQR method across numerical variables to remove extreme abnormal points.
+* **Validated cleaning results** — Plotted boxplots, histograms, and pairplots to ensure proper distribution and pattern consistency after cleaning.
+
+---
 
 

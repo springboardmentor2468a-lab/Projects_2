@@ -21,7 +21,7 @@ Two datasets were used:
 
 Both include features such as season, holiday flag, working-day status, temperature, humidity, windspeed, and rental count. The hourly dataset additionally provides the hour of the day.
 
-To strengthen the analysis, both files were used together, allowing comparison between hourly and daily patterns.
+To strengthen the analysis, both files were used, allowing comparison between hourly and daily patterns.
 
 ---
 

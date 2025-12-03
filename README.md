@@ -54,4 +54,21 @@ Source: Kaggle (Bike Sharing Dataset) https://www.kaggle.com/datasets/lakshmi25n
 
 ---
 
+## **Model Training & Evaluation**
+
+* **Prepared modeling datasets** — Loaded the feature-engineered daily and hourly files and separated predictors (`X`) from the target variable (`cnt`).
+
+* **Split data into train/test sets** — Allocated 80% for training and 20% for testing using a fixed random state for reproducibility.
+
+* **Trained baseline regression models** — Implemented Linear Regression, Random Forest Regressor, and Gradient Boosting Regressor to establish initial performance benchmarks on both datasets.
+
+* **Evaluated model performance** — Computed RMSE, MAE, and R² scores to quantify accuracy and identify the most effective model for each dataset.
+
+* **Compared actual vs predicted values** — Visualized real and predicted rental counts using line plots to assess how closely the models follow real trends.
+
+* **Analyzed feature importance** — Used Random Forest feature importance scores to understand which variables (e.g., temperature, hour, season) had the strongest influence on bike-rental demand.
+
+* **Compared daily vs hourly models** — Summarized performance differences between datasets, noting that hourly data achieved higher accuracy due to richer temporal granularity.
+
+---
 

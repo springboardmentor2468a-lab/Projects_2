@@ -3,6 +3,8 @@
 📘 Overview
 RideWise is a machine learning regression project that predicts bike-sharing demand using historical rental data, weather conditions, and event-related features. The goal is to forecast rental counts (cnt) to support better decision-making in urban bike-sharing systems.
 
+
+
 📂 Dataset
 
 Dataset from Kaggle containing:
@@ -18,6 +20,9 @@ Bike rental counts
 🔗 Source: https://www.kaggle.com/datasets/lakshmi25npathi/bike-sharing-dataset
 
 
+
+
+
 🧼 Data Preprocessing
 
 Handling missing or inconsistent data
@@ -27,6 +32,9 @@ Encoding categorical variables
 Feature engineering
 
 Outlier detection & removal using IQR (Boxplot method)
+
+
+
 
 
 📊 Exploratory Data Analysis (EDA)
@@ -40,6 +48,9 @@ Boxplots
 Correlation insights
 
 Distribution and trend analysis
+
+
+
 
 
 🤖 Modeling
@@ -60,6 +71,10 @@ Target Variable: cnt
 Input Features: Weather metrics, time/date attributes, event information.
 
 
+
+
+
+
 📈 Evaluation
 
 Models evaluated using:
@@ -71,6 +86,10 @@ RMSE
 R² Score
 
 Gradient Boosting achieved the best performance.
+
+
+
+
 
 
 🛠 Tech Stack

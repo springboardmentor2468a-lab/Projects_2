@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rideon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chart Data Labels Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: rgb(255, 254, 254);
+            color: #fff;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-image: url(Background.jpg);
+            border-right: 1px solid #e5e7eb;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .panel {
+            background-image: url(Background.jpg);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px #fff;
+        }
+
+        .form-range::-webkit-slider-thumb {
+            background: #78ceff;
+        }
+
+        .Month {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .form-check {
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .slider-label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .slider-value {
+            color: #78ceff;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .muted {
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        .month-grid label {
+            font-size: 13px;
+        }
+
+        .panel text-center mb-4{
+            padding: 20px;
+            margin: 20px;
+        }
+
+        
+    </style>
+</head>
+
+<body >
+
+    <div class="d-flex">
+
+        <!-- Sidebar -->
+        <aside class="sidebar p-4">
+            <div class="d-flex align-items-center mb-4">
+                <div class="logo me-3"><img src="Rideon.png" alt="Logo" width="120pxl" height="120pxl"></div>
+                <div>
+                    <div class="fw-bold" >Rideon</div>
+                    <small class="text-muted" ><span style="color: #fff;"> ride, your rules </span></small>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <div class="fw-semibold text-muted mb-2" >
+                    <i class="bi bi-gear me-2"></i><span style="color: #fff;">⚙️Forecast Settings</span>
+                </div>
+                &nbsp;<p>Forecast Granuiarity</p>
+                
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="flex-fill p-5" >
+
+            <!-- Environmental -->
+            <div class="panel p-4 mb-4">
+                <h5 class="bi bi-sliders me-2">
+                    </i>Environmental & Calendar Inputs
+                </h5>
+
+                <div class="row g-4">
+                    <!-- Left -->
+                    <div class="col-lg-6">
+
+                        <div class="mb-3">
+                            <label class="form-label">Season</label>
+                            <select class="form-select">
+                                <option selected>Spring</option>
+                                <option>Summer</option>
+                                <option>Fall</option>
+                                <option>Winter</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Is it a Holiday?</label>
+                            <select class="form-select">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Weather Condition</label>
+                            <select class="form-select">
+                                <option>Clear / Few Clouds</option>
+                                <option>Cloudy</option>
+                                <option>Rain</option>
+                                <option>Snow</option>
+                            </select>
+                        </div>
+
+                        <div class="container mt-4">
+                            <label >
+                                 Select Date
+                            </label>
+                            <input type="date" class="form-control" id="calendar">
+                        </div>
+
+                   
+
+                        <div>
+                            <label class="form-label">Day of Week</label>
+                            <select class="form-select">
+                                <option>Sunday</option>
+                                <option>Monday</option>
+                                <option>Tuesday</option>
+                                <option selected>Wednesday</option>
+                                <option>Thursday</option>
+                                <option>Friday</option>
+                                <option>Saturday</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Weather -->
+
+
+                    <div class="col-lg-6">
+                        <h6 class="fw-semibold mb-3">🌤 Weather Conditions</h6>
+
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between slider-label">
+                                <span>🌡 Temperature (°C)</span><label class="form-label fw-bold"></label>
+                                <span class="slider-value" id="t">0.0°C</span>
+                            </div>
+
+                        </div>
+                        <input type="range" class="form-range" min="0" max="50" step="0.1" value="0" id="temp"
+                            oninput="t.innerText=this.value">
+
+                        <!-- 🙂 Feels Like -->
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between slider-label">
+                                <span>🙂 Feels Like Temperature (°C)</span>
+                                <span class="slider-value" id="f">0</span>
+                            </div>
+
+                        </div>
+                        <input type="range" class="form-range" min="0" max="55" step="0.1" value="0" id="feel"
+                            oninput="f.innerText=this.value">
+
+                        <!-- 💧 Humidity -->
+
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between slider-label">
+                                <span>💧 Humidity (%)</span>
+                                <span class="slider-value" id="h">0</span>
+                            </div>
+
+                        </div>
+                        <input type="range" class="form-range" min="0" max="100" step="0.1" value="0" id="humidity"
+                            oninput="h.innerText=this.value">                      
+                        
+                        <!-- 💨 Wind Speed -->
+
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between slider-label">
+                                <span>💨 Wind Speed</span>
+                                <span class="slider-value" id="w">0</span>
+                            </div>
+
+                        </div>
+                        <div class="mb-4">
+                            <input type="range" class="form-range" min="0" max="100" step="0.1" value="0" id="wind"
+                                oninput="w.innerText=this.value">
+                        </div>
+        
+
+                        <div class="muted" style="color: #fff;">
+                            🔎 Normalized values → temp=0.37, atemp=0.66, hum=0.78, wind=0.36
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hour of Day -->
+            <div class="panel p-4">
+                <h5 class="fw-semibold">
+                    <!--🕒 Hour of Day-->
+                    <br><br>
+
+                    <h2 style="margin: 30px;">Prediction Dashboard</h2>
+
+                     <div class="d-flex">
+
+        <div class="flex-fill p-4">
+            <div class="panel text-center mb-4" style="padding: 20px;
+            margin: 20px;font-size: x-large;">
+                <input type="radio" name="type" id="dayOption" checked > Day Prediction
+                <input type="radio" name="type" id="hourOption" class="ms-3"> Hour Prediction
+            </div>
+
+            <div id="hourInputBox" style="display:none" class="panel mb-3">
+                <label>Select Hour</label>
+                <select class="form-select" id="hourSelect">
+                    <option value="23">23 </option>
+                    <option value="22">22 </option>
+                    <option value="21">21 </option>
+                    <option value="20">20 </option>
+                    <option value="19">19 </option>
+                    <option value="18">18 </option>
+                    <option value="17">17 </option>
+                    <option value="16">16 </option>
+                    <option value="15">15 </option>
+                    <option value="14">14 </option>
+                    <option value="13">13 </option>
+                    <option value="12">12 </option>
+                    <option value="11">11 </option>
+                    <option value="10">10 </option>
+                    <option value="9">9 </option>
+                    <option value="8">8 </option>
+                    <option value="7">7 </option>
+                    <option value="6">6 </option>
+                    <option value="5">5 </option>
+                    <option value="4">4 </option>
+                    <option value="3">3 </option>
+                    <option value="2">2 </option>
+                    <option value="1">1 </option>
+                    <option value="0">0 </option>
+                </select>
+            </div>
+
+            <div class="panel">
+                <canvas id="myChart"></canvas>
+            </div>
+
+        </div>
+    
+    </div>
+
+
+     <script>
+        $('#calendar').datepicker({
+            format: 'dd-mm-yyyy',
+            autoclose: true,
+            todayHighlight: true
+        });
+    </script>
+
+
+    <script>
+        function bindSlider(sliderId, valueId, unit) {
+            const slider = document.getElementById(sliderId);
+            const value = document.getElementById(valueId);
+
+            value.innerText = parseFloat(slider.value).toFixed(1) + unit;
+
+            slider.addEventListener('input', function () {
+                value.innerText = parseFloat(this.value).toFixed(1) + unit;
+            });
+        }
+
+        bindSlider('temp', 'tempVal', '°C');
+        bindSlider('feel', 'feelVal', '°C');
+        bindSlider('humidity', 'humVal', '%');
+        bindSlider('wind', 'windVal', ' km/h');
+    </script>
+
+
+    <script>
+        const weatherSlider = document.getElementById('weatherSlider');
+        const weatherValue = document.getElementById('weatherValue');
+
+        weatherSlider.addEventListener('input', function () {
+            weatherValue.innerText = this.value;
+        });
+    </script>
+
+
+    <script>
+        const dayRadio = document.getElementById("dayOption");
+        const hourRadio = document.getElementById("hourOption");
+        const hourBox = document.getElementById("hourInputBox");
+
+        dayRadio.onchange = () => hourBox.style.display = "none";
+        hourRadio.onchange = () => hourBox.style.display = "block";
+
+        const ctx = document.getElementById("myChart");
+        let chart;
+
+        function draw(labels, data, title) {
+            if (chart) chart.destroy();
+            chart = new Chart(ctx, {
+                type: "bar",
+                data: { labels: labels, datasets: [{ label: title, data: data, backgroundColor: "#0d6efd" }] },
+                options: { plugins: { datalabels: { anchor: 'end', align: 'end' } } },
+                plugins: [ChartDataLabels]
+            });
+        }
+
+        draw(["Mon", "Tue", "Wed", "Thu", "Fri"], [100, 200, 300, 250, 400], "Day Prediction");
+
+        hourRadio.addEventListener("change", () => {
+            draw(["8AM", "9AM", "10AM", "11AM", "12PM", "1PM"], [55, 66, 44, 33, 31, 28], "Hour Prediction");
+        });
+
+        dayRadio.addEventListener("change", () => {
+            draw(["Mon", "Tue", "Wed", "Thu", "Fri"], [100, 200, 300, 250, 400], "Day Prediction");
+        });
+    </script>
+
+    </h5>
+    </div>
+
+    </main>
+    </div>
+
+</body>
+
+</html>

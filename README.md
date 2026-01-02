@@ -101,9 +101,3 @@ Include your preferred license file (e.g., `MIT`) and attribution if you used ex
 
 ---
 
-If you want, I can also:
-- Add a `requirements.txt` listing precise package versions used locally
-- Add sample screenshots and a short GIF of the Streamlit UI
-- Add a license file (e.g., MIT)
-
-Tell me which of these you'd like next and I'll add them.

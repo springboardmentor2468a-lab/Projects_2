@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bike Rental Forecast</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- COVER PAGE -->
+<section class="hero">
+  <div class="hero-overlay">
+    <h1>🚲 Bike Rental Demand Forecast</h1>
+    <p>Hour-wise & Day-wise Prediction Dashboard</p>
+    <button onclick="scrollToApp()">Start Forecast</button>
+  </div>
+</section>
+
+<!-- MAIN APP -->
+<div id="app" class="app">
+
+  <!-- LEFT PANEL -->
+  <aside class="sidebar">
+    <h2>Select Forecast</h2>
+    <button onclick="showHour()">⏰ Hour-wise</button>
+    <button onclick="showDay()">📅 Day-wise</button>
+
+    <img class="bike-img"
+         src="https://images.unsplash.com/photo-1517940310602-75e82c56d66b">
+  </aside>
+
+  <!-- RIGHT PANEL -->
+  <main class="content">
+
+    <!-- HOUR SECTION -->
+    <div id="hourSection" class="section">
+      <h2>Next 6 Hours Prediction</h2>
+
+      <label>Date</label>
+      <input type="date">
+
+      <label>Year</label>
+      <select id="hourYear"></select>
+
+      <label>Start Hour (0–23)</label>
+      <input type="number" id="hour" value="6" min="0" max="23">
+
+      <label>Temperature (0–1)</label>
+      <input type="number" id="hourTemp" value="0.3" step="0.01">
+
+      <label>Humidity (0–1)</label>
+      <input type="number" id="hourHum" value="0.6" step="0.01">
+
+      <label>Wind Speed (0–1)</label>
+      <input type="number" id="hourWind" value="0.2" step="0.01">
+
+      <label>Holiday (0 = No, 1 = Yes)</label>
+      <input type="number" id="hourHoliday" value="0" min="0" max="1">
+
+      <button class="predict" onclick="predictHour()">Predict Hours</button>
+      <canvas id="hourChart"></canvas>
+    </div>
+
+    <!-- DAY SECTION -->
+    <div id="daySection" class="section hidden">
+      <h2>Next 6 Days Prediction</h2>
+
+      <label>Start Date</label>
+      <input type="date">
+
+      <label>Year</label>
+      <select id="dayYear"></select>
+
+      <label>Temperature (0–1)</label>
+      <input type="number" id="dayTemp" value="0.35" step="0.01">
+
+      <label>Humidity (0–1)</label>
+      <input type="number" id="dayHum" value="0.55" step="0.01">
+
+      <label>Wind Speed (0–1)</label>
+      <input type="number" id="dayWind" value="0.25" step="0.01">
+
+      <label>Working Day (0 = No, 1 = Yes)</label>
+      <input type="number" id="dayWork" value="1" min="0" max="1">
+
+      <button class="predict" onclick="predictDay()">Predict Days</button>
+      <canvas id="dayChart"></canvas>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

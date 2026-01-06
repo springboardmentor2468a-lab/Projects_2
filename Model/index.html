@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Ride Demand Prediction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- GSAP -->
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+html,body{height:100%;}
+
+body{
+  background:url("back 2.png") center/cover fixed;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* PARTICLES */
+#particles{position:fixed;inset:0;z-index:-1;}
+
+/* PRELOADER */
+#preloader{
+  position:fixed;
+  inset:0;
+  background:#0b1306;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  will-change:opacity,transform;
+}
+
+.preload-box{
+  text-align:center;
+  will-change:opacity,transform;
+}
+
+.preload-box h1{
+  font-size:2.6rem;
+  font-weight:900;
+  color:#ffd400;
+  text-shadow:0 0 30px rgba(255,215,0,.6);
+}
+
+.preload-box p{
+  margin-top:10px;
+  color:#e5e7eb;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.25);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  z-index:10;
+}
+
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:18px;
+  text-align:center;
+}
+
+header h1{color:#ffd400;font-weight:900;}
+
+main{padding-top:90px;}
+.wrapper{max-width:1200px;margin:auto;padding:100px 40px 160px;}
+
+/* HERO */
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:80px;
+}
+
+.hero-text h2{font-size:3.6rem;color:#ffd400;}
+.hero-text p{margin-top:16px;line-height:1.7;}
+
+.hero-bike img{
+  width:520px;
+  max-width:90vw;
+  filter:drop-shadow(0 40px 120px rgba(0,0,0,.8));
+}
+
+/* PANEL */
+.panel{
+  margin-top:120px;
+  padding:60px;
+  border-radius:36px;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 40px 120px rgba(0,0,0,.45);
+}
+
+.panel-grid{display:grid;grid-template-columns:1fr 420px;gap:60px;}
+.panel h3{color:#ffd400;font-size:2.4rem;}
+
+/* FORM */
+.form-box{
+  background:#fff;
+  padding:34px;
+  border-radius:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  color:#111;
+}
+
+select,input{
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+}
+
+button{
+  padding:16px;
+  border-radius:18px;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ffe066,#ffd400);
+  box-shadow:0 0 22px rgba(255,215,0,.6);
+}
+
+/* GRAPH */
+#graphBox{display:none;margin-top:20px;}
+canvas{width:100%;height:220px;}
+
+/* BENEFITS */
+.benefits{margin-top:30px;}
+.benefits ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.benefits li{
+  padding:14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.75);
+  color:#111;
+  font-weight:600;
+}
+
+/* FOOTER */
+footer{
+  background:#0b1306;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+.footer-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:40px;
+  display:flex;
+  justify-content:space-between;
+}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;}
+  .panel-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="preload-box">
+    <h1>Shubhagata Acharyya</h1>
+    <p>AI Ride Demand Prediction</p>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <h1>AI Ride Demand Prediction</h1>
+  </div>
+</header>
+
+<main>
+<div class="wrapper">
+
+<section class="hero">
+  <div class="hero-text">
+    <h2>Ride Green.<br>Ride Smart.</h2>
+    <p>Sustainable cycling powered by intelligent AI-based ride demand prediction.</p>
+  </div>
+  <div class="hero-bike">
+    <img src="bike-removebg-preview.png">
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-grid">
+
+    <div>
+      <h3>AI Ride Demand Prediction</h3>
+      <p>Predict bike ride demand hour-wise or day-wise using machine learning.</p>
+
+      <div class="benefits">
+        <ul>
+          <li>🌱 Lower Carbon</li>
+          <li>❤️ Health</li>
+          <li>🚦 Less Traffic</li>
+          <li>🧠 Mental Health</li>
+          <li>🏙️ Smart Cities</li>
+          <li>💰 Cost Effective</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <select id="mode">
+        <option value="hour">Hour-wise Prediction</option>
+        <option value="day">Day-wise Prediction</option>
+      </select>
+      <input placeholder="Temperature (°C)">
+      <input placeholder="Humidity (%)">
+      <button onclick="showGraph()">Generate Prediction</button>
+
+      <div id="graphBox">
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2025 AI Ride Demand Prediction</div>
+    <div>Designed by Shubhagata Acharyya</div>
+  </div>
+</footer>
+
+<script>
+/* SMOOTH PRELOADER EXIT */
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    gsap.to(".preload-box",{
+      opacity:0,
+      y:-10,
+      duration:0.8,
+      ease:"power2.out"
+    });
+    gsap.to("#preloader",{
+      opacity:0,
+      duration:1.2,
+      ease:"power3.out",
+      delay:0.2,
+      onComplete:()=>preloader.remove()
+    });
+  },1200);
+});
+
+/* GSAP PAGE ANIMATIONS */
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(".hero-text",{x:-120,opacity:0,duration:1.6,ease:"power4.out"});
+gsap.from(".hero-bike",{x:120,opacity:0,duration:1.8,ease:"power4.out"});
+gsap.to(".hero-bike",{y:-20,repeat:-1,yoyo:true,duration:4,ease:"sine.inOut"});
+gsap.from(".panel",{scrollTrigger:{trigger:".panel",start:"top 75%"},y:120,opacity:0});
+gsap.from(".benefits li",{scrollTrigger:{trigger:".benefits",start:"top 80%"},y:40,opacity:0,stagger:0.15});
+
+/* GRAPH */
+function showGraph(){
+  const mode=document.getElementById("mode").value;
+  const box=document.getElementById("graphBox");
+  box.style.display="block";
+
+  const canvas=document.getElementById("chart");
+  const ctx=canvas.getContext("2d");
+  canvas.width=canvas.offsetWidth;
+  canvas.height=220;
+
+  let data,labels;
+  if(mode==="hour"){
+    data=[20,35,50,65,80,70,60,55];
+    labels=["6AM","8AM","10AM","12PM","2PM","4PM","6PM","8PM"];
+  }else{
+    data=[45,60,75,55,90,70];
+    labels=["Mon","Tue","Wed","Thu","Fri","Sat"];
+  }
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const max=Math.max(...data);
+  const scale=(canvas.height-40)/max;
+  const bw=30,gap=22;
+
+  data.forEach((v,i)=>{
+    const h=v*scale;
+    const x=40+i*(bw+gap);
+    const y=canvas.height-h-20;
+    ctx.fillStyle="#ffd400";
+    ctx.fillRect(x,y,bw,h);
+    ctx.fillStyle="#111";
+    ctx.fillText(labels[i],x-4,canvas.height-5);
+  });
+}
+
+/* PARTICLES */
+const canvasP=document.getElementById("particles");
+const ctxP=canvasP.getContext("2d");
+let w,h,p=[];
+function resize(){w=canvasP.width=innerWidth;h=canvasP.height=innerHeight;}
+addEventListener("resize",resize);resize();
+
+class Part{
+  constructor(){
+    this.x=Math.random()*w;
+    this.y=Math.random()*h;
+    this.vx=Math.random()*.3;
+    this.vy=Math.random()*.3;
+  }
+  draw(){
+    ctxP.fillStyle="rgba(255,215,0,.35)";
+    ctxP.fillRect(this.x,this.y,2,2);
+  }
+  update(){
+    this.x+=this.vx;
+    this.y+=this.vy;
+    if(this.x>w)this.x=0;
+    if(this.y>h)this.y=0;
+  }
+}
+for(let i=0;i<140;i++)p.push(new Part());
+(function anim(){
+  ctxP.clearRect(0,0,w,h);
+  p.forEach(x=>{x.update();x.draw();});
+  requestAnimationFrame(anim);
+})();
+</script>
+
+</body>
+</html>
+

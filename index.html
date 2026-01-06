@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bike Rental Forecast</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚲 Bike Rental Demand Forecasting System</h1>
+    <p>Hour-wise & Day-wise Prediction</p>
+
+    <img src="/static/bike.png" class="bike-img">
+
+    <div class="boxes">
+
+        <div class="box">
+            <h2>Hour-wise Inputs</h2>
+            <input placeholder="Hour (0-23)">
+            <input placeholder="Temperature">
+            <input placeholder="Humidity">
+            <input placeholder="Windspeed">
+        </div>
+
+        <div class="box">
+            <h2>Day-wise Inputs</h2>
+            <input type="date">
+            <input placeholder="Temperature">
+            <input placeholder="Humidity">
+            <input placeholder="Windspeed">
+        </div>
+
+    </div>
+
+    <button onclick="predict()">Predict</button>
+
+    <h2 id="result"></h2>
+
+    <canvas id="myChart"></canvas>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

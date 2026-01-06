@@ -1,0 +1,8 @@
+streamlit
+gradio
+numpy
+pandas
+matplotlib
+scikit-learn==1.6.1
+xgboost
+joblibs

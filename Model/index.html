@@ -5,27 +5,30 @@
 <title>AI Ride Demand Prediction</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- GSAP -->
 <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
 html,body{height:100%;}
 
 body{
-  background:url("back 2.png") center/cover fixed;
+  background:url("back%202.png") center/cover fixed;
   color:#fff;
   overflow-x:hidden;
 }
 
-#particles{position:fixed;inset:0;z-index:-1;}
-
+/* PRELOADER */
 #preloader{
-  position:fixed;inset:0;background:#0b1306;
-  display:flex;align-items:center;justify-content:center;
+  position:fixed;inset:0;
+  background:#0b1306;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   z-index:9999;
 }
 
+/* HEADER */
 header{
   position:fixed;top:0;width:100%;
   backdrop-filter:blur(6px);
@@ -33,13 +36,18 @@ header{
   border-bottom:1px solid rgba(255,255,255,.15);
   z-index:10;
 }
-
-.header-inner{max-width:1200px;margin:auto;padding:18px;text-align:center;}
+.header-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:18px;
+  text-align:center;
+}
 header h1{color:#ffd400;font-weight:900;}
 
 main{padding-top:90px;}
 .wrapper{max-width:1200px;margin:auto;padding:100px 40px 160px;}
 
+/* HERO */
 .hero{
   min-height:90vh;
   display:flex;
@@ -47,10 +55,7 @@ main{padding-top:90px;}
   justify-content:space-between;
   gap:80px;
 }
-
 .hero-text h2{font-size:3.6rem;color:#ffd400;}
-.hero-text p{margin-top:16px;line-height:1.7;}
-
 .hero-bike img{
   width:520px;
   max-width:90vw;
@@ -65,9 +70,13 @@ main{padding-top:90px;}
   background:rgba(255,255,255,.18);
   backdrop-filter:blur(22px);
 }
+.panel-grid{
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:60px;
+}
 
-.panel-grid{display:grid;grid-template-columns:1fr 420px;gap:60px;}
-
+/* FORM */
 .form-box{
   background:#fff;
   padding:34px;
@@ -77,13 +86,11 @@ main{padding-top:90px;}
   gap:14px;
   color:#111;
 }
-
 select,input{
   padding:12px;
   border-radius:12px;
   border:1px solid #ddd;
 }
-
 button{
   padding:16px;
   border-radius:18px;
@@ -93,8 +100,9 @@ button{
   background:linear-gradient(135deg,#ffe066,#ffd400);
 }
 
+/* GRAPH */
 #graphBox{display:none;margin-top:20px;}
-canvas{width:100%;height:220px;}
+canvas{width:100%;height:260px;background:#fff;border-radius:14px;}
 
 footer{
   background:#0b1306;
@@ -104,20 +112,11 @@ footer{
   max-width:1200px;
   margin:auto;
   padding:40px;
-  display:flex;
-  justify-content:space-between;
-}
-
-@media(max-width:900px){
-  .hero{flex-direction:column;text-align:center;}
-  .panel-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
 
 <body>
-
-<canvas id="particles"></canvas>
 
 <div id="preloader">
   <div style="text-align:center">
@@ -135,15 +134,13 @@ footer{
 <main>
 <div class="wrapper">
 
-<!-- HERO WITH BIKE IMAGE RESTORED -->
 <section class="hero">
   <div class="hero-text">
     <h2>Ride Green.<br>Ride Smart.</h2>
-    <p>Sustainable cycling powered by intelligent AI-based ride demand prediction.</p>
+    <p>Sustainable cycling powered by intelligent AI-based demand prediction.</p>
   </div>
-
   <div class="hero-bike">
-    <img src="bike-removebg-preview.png" alt="Bike">
+    <img src="bike-removebg-preview.png">
   </div>
 </section>
 
@@ -152,61 +149,60 @@ footer{
 
 <div>
   <h3 style="color:#ffd400">RideWise Prediction</h3>
-  <p>Hour-wise or Day-wise bike demand forecasting.</p>
 </div>
 
 <div class="form-box">
 
-<select id="mode" onchange="toggleMode()">
+<select id="mode">
   <option value="hour">Hour-wise Prediction</option>
   <option value="day">Day-wise Prediction</option>
 </select>
 
 <select id="hour">
-  <option value="">Hour (0–23)</option>
+  <option value="">Hour</option>
   <script>
     for(let i=0;i<24;i++)document.write(`<option>${i}</option>`);
   </script>
 </select>
 
 <select id="weekday">
-  <option value="">Weekday (0–6)</option>
+  <option value="">Weekday</option>
   <option>0</option><option>1</option><option>2</option>
   <option>3</option><option>4</option><option>5</option><option>6</option>
 </select>
 
-<select>
-  <option>Season</option>
+<select id="season">
+  <option value="">Season</option>
   <option value="1">Spring</option>
   <option value="2">Summer</option>
   <option value="3">Fall</option>
   <option value="4">Winter</option>
 </select>
 
-<select>
-  <option>Weather Situation</option>
+<select id="weather">
+  <option value="">Weather</option>
   <option value="1">Clear</option>
   <option value="2">Mist</option>
   <option value="3">Light Rain</option>
   <option value="4">Heavy Rain</option>
 </select>
 
-<select>
-  <option>Working Day</option>
+<select id="workingday">
+  <option value="">Working Day</option>
   <option value="1">Yes</option>
   <option value="0">No</option>
 </select>
 
-<select>
-  <option>Holiday</option>
+<select id="holiday">
+  <option value="">Holiday</option>
   <option value="1">Yes</option>
   <option value="0">No</option>
 </select>
 
-<input placeholder="Temperature (°C)">
-<input placeholder="Feels Like Temp (°C)">
-<input placeholder="Humidity (%)">
-<input placeholder="Wind Speed">
+<input id="temp" placeholder="Temperature (°C)">
+<input id="atemp" placeholder="Feels Like Temp (°C)">
+<input id="humidity" placeholder="Humidity (%)">
+<input id="windspeed" placeholder="Wind Speed">
 
 <button onclick="predict()">Generate Prediction</button>
 
@@ -222,45 +218,69 @@ footer{
 </main>
 
 <footer>
-<div class="footer-inner">
-  <div>© 2025 AI Ride Demand Prediction</div>
-  <div>Designed by Shubhagata Acharyya</div>
-</div>
+  <div class="footer-inner">
+    © 2025 AI Ride Demand Prediction
+  </div>
 </footer>
 
 <script>
-const preloader=document.getElementById("preloader");
 window.addEventListener("load",()=>{
-  gsap.to(preloader,{opacity:0,duration:1,onComplete:()=>preloader.remove()});
+  gsap.to("#preloader",{opacity:0,duration:1,onComplete:()=>preloader.remove()});
 });
 
-function toggleMode(){
-  const m=document.getElementById("mode").value;
-  document.getElementById("hour").style.display=m==="hour"?"block":"none";
+function clean(v){return parseFloat(v)}
+
+async function predict(){
+  const mode=document.getElementById("mode").value;
+
+  const ids=[
+    "season","holiday","workingday","weather",
+    "temp","atemp","humidity","windspeed","hour","weekday"
+  ];
+
+  let features=[];
+  for(let id of ids){
+    const el=document.getElementById(id);
+    if(el && el.value===""){alert("Fill all fields");return;}
+    if(el)features.push(clean(el.value));
+  }
+
+  const now=new Date();
+  features.push(now.getMonth()+1);
+  features.push(now.getFullYear());
+
+  const res=await fetch("/predict",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({mode,features})
+  });
+
+  const data=await res.json();
+  drawBars(data.predictions);
 }
 
-function predict(){
+function drawBars(values){
   const box=document.getElementById("graphBox");
   box.style.display="block";
+  const c=document.getElementById("chart");
+  const ctx=c.getContext("2d");
+  c.width=c.offsetWidth;
+  c.height=260;
+  ctx.clearRect(0,0,c.width,c.height);
 
-  const canvas=document.getElementById("chart");
-  const ctx=canvas.getContext("2d");
-  canvas.width=canvas.offsetWidth;
-  canvas.height=220;
+  const max=Math.max(...values);
+  const bw=30,gap=20;
+  const scale=(c.height-40)/max;
 
-  const data=[30,45,60,75,90,80,65];
-  const labels=["6","8","10","12","14","16","18"];
-
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  const max=Math.max(...data);
-  const scale=(canvas.height-40)/max;
-
-  data.forEach((v,i)=>{
+  values.forEach((v,i)=>{
     const h=v*scale;
+    const x=30+i*(bw+gap);
+    const y=c.height-h-20;
     ctx.fillStyle="#ffd400";
-    ctx.fillRect(40+i*45,canvas.height-h-20,30,h);
-    ctx.fillStyle="#111";
-    ctx.fillText(labels[i],40+i*45,canvas.height-5);
+    ctx.fillRect(x,y,bw,h);
+    ctx.fillStyle="#000";
+    ctx.fillText(v,x,y-5);
+    ctx.fillText(`+${i+1}`,x,y+h+14);
   });
 }
 </script>

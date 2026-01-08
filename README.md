@@ -15,5 +15,9 @@ The system predicts the number of bike rentals for a given time period based on 
 - Fine-tuning models for improved accuracy
 - Deploying the final model using a simple web interface
 
+## Live Application
+The RideWise app is deployed on **Streamlit Cloud** and can be accessed here:  
+🔗 https://ride-wise.streamlit.app/
+
 ## Outcome
 The project results in a trained regression model capable of predicting bike-sharing demand and a web application that allows users to interact with the model and generate predictions.

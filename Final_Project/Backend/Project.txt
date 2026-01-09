@@ -1,0 +1,32 @@
+RideWise — AI-Based Bike Rental Demand Prediction System
+
+Project Description:
+RideWise is a machine learning-powered bike rental demand forecasting system
+that predicts rental counts at both daily and hourly levels. The system uses
+advanced feature engineering (lag features, rolling statistics, cyclic
+encoding) and recursive forecasting to simulate real-world demand behavior.
+
+Deployed Application:
+https://ridewise-my12internship.streamlit.app/
+
+Key Features:
+- Hourly & Daily demand prediction
+- Recursive multi-step forecasting
+- Lag-based and rolling mean feature engineering
+- Cyclic time encoding (hour, weekday, month)
+- Interactive UI built with Streamlit
+- Production-ready ML pipeline
+
+Tech Stack:
+- Python
+- Pandas, NumPy
+- Scikit-learn / LightGBM
+- Streamlit
+- GitHub
+
+Repository Purpose:
+This repository contains the complete machine learning pipeline,
+feature engineering logic, trained models, and UI code for the RideWise system.
+
+Author:
+Samruddhi Jadhav

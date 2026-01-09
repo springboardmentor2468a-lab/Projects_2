@@ -237,6 +237,17 @@ axios.post("http://127.0.0.1:5000/predict", {
 * Real-time weather API integration
 
 ---
+<img width="1911" height="920" alt="image" src="https://github.com/user-attachments/assets/0a60be26-652c-4406-968c-ab6b9dcdc9bf" />
+
+<img width="1912" height="914" alt="image" src="https://github.com/user-attachments/assets/4b57edb5-02af-4faf-b0a8-0e2873a75d50" />
+
+<img width="1911" height="817" alt="image" src="https://github.com/user-attachments/assets/33c6cfc2-b6e7-4909-b6ed-3f910b426606" />
+
+<img width="1916" height="748" alt="image" src="https://github.com/user-attachments/assets/e54d6c44-05b5-4bbe-aa2d-0f8ab18a6504" />
+
+
+
+
 
 ## 👨‍💻 Author
 

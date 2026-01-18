@@ -1,7 +1,7 @@
-import streamlit as st
 import pandas as pd
 import plotly.express as px
 import numpy as np
+import streamlit as st
 from datetime import datetime, timedelta
 
 st.set_page_config(page_title="Bike Rental Prediction", layout="wide")
@@ -64,6 +64,7 @@ if mode == "? Hour Prediction":
     inputs["Weather"] = st.selectbox("? Weather", ["Clear", "Mist", "Rain"])
 
 else:
+    inputs["Day"] = st.slider("?? Day", 1, 30, 2)
     inputs["AM_PM"] = st.radio("?? AM / PM", ["AM", "PM"])
     inputs["Temperature"] = st.slider("?? Temperature (�C)", 0.0, 40.0, 26.0)
     inputs["Humidity"] = st.slider("?? Humidity (%)", 0.0, 100.0, 65.0)
